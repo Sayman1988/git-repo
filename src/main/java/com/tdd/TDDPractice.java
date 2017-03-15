@@ -13,9 +13,7 @@ public class TDDPractice {
     public static String listAGG(List<String> list) {
         String str = "";
         for (int i = 0; i < list.size(); i++) {
-            if (i == 0)
-                str = list.get(i);
-            else str += ", " + list.get(i);
+            str += (i == 0)? list.get(i) : ", " + list.get(i);
         }
         return str;
     }
@@ -23,9 +21,7 @@ public class TDDPractice {
     public static String strAGG(List<String> list) {
         StringBuilder strb = new StringBuilder();
         for (int i = 0; i < list.size(); i++) {
-            if (i == 0)
-                strb.append(list.get(i));
-            else strb.append(", " + list.get(i));
+            strb = (i == 0)? strb.append(list.get(i)) : strb.append(", " + list.get(i));
         }
         return strb.toString();
     }
