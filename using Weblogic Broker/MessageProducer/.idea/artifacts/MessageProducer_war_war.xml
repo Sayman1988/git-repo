@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="MessageProducer-war:war">
-    <output-path>$PROJECT_DIR$/MessageProducer-war/target</output-path>
-    <root id="archive" name="MessageProducer-war-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="MessageProducer-war:war exploded" />
-    </root>
-  </artifact>
-</component>

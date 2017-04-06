@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="ear" name="MessageProducer-ear:ear">
-    <output-path>$PROJECT_DIR$/MessageProducer-ear/target</output-path>
-    <root id="archive" name="MessageProducer-ear-1.0-SNAPSHOT.ear">
-      <element id="artifact" artifact-name="MessageProducer-ear:ear exploded" />
-    </root>
-  </artifact>
-</component>
