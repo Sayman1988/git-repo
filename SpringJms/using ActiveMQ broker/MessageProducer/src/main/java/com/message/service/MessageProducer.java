@@ -37,5 +37,6 @@ public class MessageProducer {
         jmsTemplate.send(destinationQueue, session -> session.createTextMessage(text));
         log.info(text);
     }
+    //TEST
 }
 
