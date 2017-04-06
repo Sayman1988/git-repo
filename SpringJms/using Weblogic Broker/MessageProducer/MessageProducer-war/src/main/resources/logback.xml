@@ -1,4 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <root level="info"/>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>../logs/message-producer.log</file>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %date %-5level %-40.40logger{39}:%-3line - %message%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <logger name="com.message.service" level="debug"
+            additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <root level="error">
+        <appender-ref ref="FILE" />
+    </root>
+
 </configuration>
