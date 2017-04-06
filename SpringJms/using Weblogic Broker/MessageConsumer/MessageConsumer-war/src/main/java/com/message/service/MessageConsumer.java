@@ -14,7 +14,7 @@ import javax.jms.TextMessage;
 @Service
 @Slf4j
 class MessageConsumer {
-    @JmsListener(destination = "jms/feedTopic")
+    @JmsListener(destination = "${topic.feed}")
     public void receive(final TextMessage message){
         try {
             log.info("Message (id = " + message.getJMSMessageID() + ") is received with next content: " + message.getText());
