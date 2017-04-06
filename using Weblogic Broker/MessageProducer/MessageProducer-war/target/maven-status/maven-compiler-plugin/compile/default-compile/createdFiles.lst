@@ -1,0 +1,3 @@
+com\message\service\Application.class
+com\message\service\controller\Controller.class
+com\message\service\MessageProducer.class

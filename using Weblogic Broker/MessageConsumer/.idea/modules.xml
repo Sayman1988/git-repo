@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MessageConsumer.iml" filepath="$PROJECT_DIR$/MessageConsumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MessageConsumer-ear/MessageConsumer-ear.iml" filepath="$PROJECT_DIR$/MessageConsumer-ear/MessageConsumer-ear.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MessageConsumer-war/MessageConsumer-war.iml" filepath="$PROJECT_DIR$/MessageConsumer-war/MessageConsumer-war.iml" />
+    </modules>
+  </component>
+</project>
