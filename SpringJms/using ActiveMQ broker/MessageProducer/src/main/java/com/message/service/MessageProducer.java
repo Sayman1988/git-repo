@@ -36,7 +36,7 @@ public class MessageProducer {
         final String text = "TextMessage #" + ++msgCounter + " is intended for " + destinationQueue + " and was generated on " + LocalDateTime.now().format(formatter) + ". It contains next info: " + message;
         jmsTemplate.send(destinationQueue, session -> session.createTextMessage(text));
         log.info(text);
-        //TEST Branch commmit
+        //TEST Branch 2
     }
 }
 
