@@ -1,10 +1,10 @@
 package com.message.service;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.web.WebApplicationInitializer;
+        import org.springframework.boot.SpringApplication;
+        import org.springframework.boot.autoconfigure.SpringBootApplication;
+        import org.springframework.boot.builder.SpringApplicationBuilder;
+        import org.springframework.boot.web.support.SpringBootServletInitializer;
+        import org.springframework.web.WebApplicationInitializer;
 
 /**
  * @author Oleksandr Serogin

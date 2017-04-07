@@ -2,15 +2,23 @@ package com.message.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.jms.annotation.EnableJms;
+import org.springframework.web.WebApplicationInitializer;
 
 /**
- * Created by seroole on 3/31/2017.
+ * @author Oleksandr Serogin
  */
-
 @SpringBootApplication
 @EnableJms
-public class Application {
+public class Application extends SpringBootServletInitializer implements WebApplicationInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application){
+        return application.sources(Application.class);
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
