@@ -5,7 +5,6 @@ package com.arithmetic;
  */
 public class Demo {
     public static void main(String[] args) throws Exception {
-        Calculator calculator = new Calculator(3, "/", 5);
-        System.out.println(calculator.calculate());
+        System.out.println("Result = " + new Calculator(3, " * ", 5).calculate());
     }
 }

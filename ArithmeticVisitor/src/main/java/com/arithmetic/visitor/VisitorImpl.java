@@ -1,9 +1,9 @@
 package com.arithmetic.visitor;
 
-import com.arithmetic.operations.Addition;
-import com.arithmetic.operations.Division;
-import com.arithmetic.operations.Multiplication;
-import com.arithmetic.operations.Subtraction;
+import com.arithmetic.operations.Add;
+import com.arithmetic.operations.Divide;
+import com.arithmetic.operations.Multiply;
+import com.arithmetic.operations.Subtract;
 import lombok.Getter;
 
 /**
@@ -13,21 +13,19 @@ import lombok.Getter;
 public class VisitorImpl implements Visitor {
     @Getter private double result;
 
-    public void visit(Addition addition) {
-        result = addition.getValue1() + addition.getValue2();
+    public void visit(Add add) {
+        result = add.getValue1() + add.getValue2();
     }
 
-    public void visit(Subtraction subtraction) {
-        result = subtraction.getValue1() - subtraction.getValue2();
+    public void visit(Subtract subtract) {
+        result = subtract.getValue1() - subtract.getValue2();
     }
 
-    @Override
-    public void visit(Division division) {
-        result = division.getValue1() / division.getValue2();
+    public void visit(Divide divide) {
+        result = divide.getValue1() / divide.getValue2();
     }
 
-    @Override
-    public void visit(Multiplication multi) {
+    public void visit(Multiply multi) {
         result = multi.getValue1() * multi.getValue2();
     }
 }
