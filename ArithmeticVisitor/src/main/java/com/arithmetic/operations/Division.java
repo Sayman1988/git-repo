@@ -8,7 +8,7 @@ import lombok.Getter;
  * @author Oleksandr Serogin
  */
 @AllArgsConstructor
-public class Multiply implements Operation {
+public class Division implements Operation {
     @Getter private double value1;
     @Getter private double value2;
 

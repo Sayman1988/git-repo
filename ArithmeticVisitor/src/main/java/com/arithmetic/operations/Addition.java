@@ -9,7 +9,7 @@ import lombok.Getter;
  * @author Oleksandr Serogin
  */
 @AllArgsConstructor
-public class Add implements Operation {
+public class Addition implements Operation {
     @Getter private double value1;
     @Getter private double value2;
 

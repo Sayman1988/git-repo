@@ -1,9 +1,9 @@
 package com.arithmetic.visitor;
 
-import com.arithmetic.operations.Add;
-import com.arithmetic.operations.Divide;
-import com.arithmetic.operations.Multiply;
-import com.arithmetic.operations.Subtract;
+import com.arithmetic.operations.Addition;
+import com.arithmetic.operations.Division;
+import com.arithmetic.operations.Multiplication;
+import com.arithmetic.operations.Subtraction;
 
 /**
  * @author Oleksandr Serogin
@@ -12,9 +12,9 @@ import com.arithmetic.operations.Subtract;
 public interface Visitor {
     double getResult();
 
-    void visit(Add add);
-    void visit(Subtract subtract);
-    void visit(Divide divide);
-    void visit(Multiply multiply);
+    void visit(Addition addition);
+    void visit(Subtraction subtraction);
+    void visit(Division division);
+    void visit(Multiplication multiplication);
 
 }
