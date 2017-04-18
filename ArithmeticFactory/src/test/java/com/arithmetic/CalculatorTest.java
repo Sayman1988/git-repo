@@ -19,14 +19,13 @@ public class CalculatorTest {
 
     @Test
     public void addition() throws Exception{
-        calculator.setOperator(" + ");
-        assertEquals(calculator.calculate(), 20.0);
+        assertEquals(new Calculator(10, "+", 10).calculate(), 20.0);
     }
 
     @Test
     public void substraction() throws Exception{
         calculator.setOperator(" - ");
-        assertEquals(calculator.calculate(), 0.0);
+        assertEquals(new Calculator(10, "-", 10).calculate(), 0.0);
     }
 
     @Test
