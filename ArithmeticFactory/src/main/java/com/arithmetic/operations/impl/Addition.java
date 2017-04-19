@@ -1,12 +1,12 @@
 package com.arithmetic.operations.impl;
 
-import com.arithmetic.operations.IAddition;
+import com.arithmetic.operations.Operation;
 
 /**
  * @author Oleksandr Serogin
  */
-public class Addition implements IAddition {
-    public double add(double value1, double value2) {
+public class Addition implements Operation {
+    public double calculate(double value1, double value2) {
         return value1 + value2;
     }
 }

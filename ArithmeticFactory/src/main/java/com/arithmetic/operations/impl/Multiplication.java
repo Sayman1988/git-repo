@@ -1,12 +1,12 @@
 package com.arithmetic.operations.impl;
 
-import com.arithmetic.operations.IMultiplication;
+import com.arithmetic.operations.Operation;
 
 /**
  * @author Oleksandr Serogin
  */
-public class Multiplication implements IMultiplication {
-    public double multiply(double value1, double value2) {
+public class Multiplication implements Operation {
+    public double calculate(double value1, double value2) {
         return value1 * value2;
     }
 }

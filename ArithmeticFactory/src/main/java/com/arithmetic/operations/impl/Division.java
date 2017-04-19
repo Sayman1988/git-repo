@@ -1,12 +1,12 @@
 package com.arithmetic.operations.impl;
 
-import com.arithmetic.operations.IDivision;
+import com.arithmetic.operations.Operation;
 
 /**
  * @author Oleksandr Serogin
  */
-public class Division implements IDivision {
-    public double divide(double value1, double value2) {
+public class Division implements Operation {
+    public double calculate(double value1, double value2) {
         return value1 / value2;
     }
 }
