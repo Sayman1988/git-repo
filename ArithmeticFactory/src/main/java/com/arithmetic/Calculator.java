@@ -22,6 +22,7 @@ public class Calculator {
     }
 
     public double calculate() throws Exception {
+        log.info("Try to find next expression result: " + value1 + " " + operator + " " + value2);
         Operation operation = factory.getOperation(operator);
         return operation.calculate(value1, value2);
     }

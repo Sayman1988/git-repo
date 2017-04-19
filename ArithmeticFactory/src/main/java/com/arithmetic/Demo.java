@@ -6,6 +6,6 @@ package com.arithmetic;
 
 public class Demo {
     public static void main(String[] args) throws Exception{
-        System.out.println("Result = " + new Calculator(3, " * ", 5).calculate());
+        System.out.println("Result = " + new Calculator(3, "%", 5).calculate());
     }
 }
