@@ -16,7 +16,7 @@ import java.util.Map;
  */
 @Slf4j
 public class OperationFactory {
-    private Map<String, Operation> operationCatalog = new HashMap() {{
+    private Map<String, Operation> operationCatalog = new HashMap <String, Operation>() {{
         put("+", new Addition());
         put("-", new Subtraction());
         put("*", new Multiplication());
@@ -26,7 +26,7 @@ public class OperationFactory {
     public Operation getOperation(String operator) throws MissedOperatorException {
         if (operationCatalog.containsKey(operator)) return operationCatalog.get(operator);
         //if operator isn't defined in the operation catalog raise exception
-        log.error("Operator \"" + operator + "\" can't be resolved or doesn't applied for this calculation method");
+        log.error("Operator \"{}\" can't be resolved or doesn't applied for this calculation method", operator);
         throw new MissedOperatorException("Check input operator \"" + operator + "\"");
     }
 }
