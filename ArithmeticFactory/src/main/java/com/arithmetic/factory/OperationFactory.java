@@ -8,22 +8,24 @@ import com.arithmetic.operations.impl.Multiplication;
 import com.arithmetic.operations.impl.Subtraction;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Oleksandr Serogin
  */
 @Slf4j
 public class OperationFactory {
+    private Map<String, Operation> operationCatalog = new HashMap() {{
+        put("+", new Addition());
+        put("-", new Subtraction());
+        put("*", new Multiplication());
+        put("/", new Division());
+    }};
+
     public Operation getOperation(String operator) throws MissedOperatorException {
-        switch (operator) {
-            case "+":
-                return new Addition();
-            case "-":
-                return new Subtraction();
-            case "*":
-                return new Multiplication();
-            case "/":
-                return new Division();
-        }
+        if (operationCatalog.containsKey(operator)) return operationCatalog.get(operator);
+        //if operator isn't defined in the operation catalog raise exception
         log.error("Operator \"" + operator + "\" can't be resolved or doesn't applied for this calculation method");
         throw new MissedOperatorException("Check input operator \"" + operator + "\"");
     }
