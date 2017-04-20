@@ -15,9 +15,8 @@ import javax.jms.TextMessage;
 @Slf4j
 @MessageDriven(
         activationConfig = {
-                @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic") ,
-                @ActivationConfigProperty(propertyName="connectionFactoryJndiName",propertyValue="jms/feedConnectionFactory"),
-                @ActivationConfigProperty(propertyName="destinationJndiName", propertyValue="jms/feedTopic")
+                @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
+                @ActivationConfigProperty(propertyName = "destinationJndiName", propertyValue = "jms/feedTopic")
         }
 )
 public class MessageConsumer implements MessageListener {
