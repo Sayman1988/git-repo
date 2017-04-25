@@ -1,0 +1,7 @@
+#spring:
+#  jms:
+#    jndi-name: jms/feedConnectionFactory
+topic:
+  feed: jms/feedTopic
+logging:
+  config: classpath:logback.xml
