@@ -9,8 +9,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 @SpringBootApplication
 @EnableScheduling
-public class BootApp {
+public class SpringBootETLApp {
     public static void main(String[] args) {
-        SpringApplication.run(BootApp.class, args);
+        SpringApplication.run(SpringBootETLApp.class, args);
     }
 }
