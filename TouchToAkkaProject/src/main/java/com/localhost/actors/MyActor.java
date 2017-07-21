@@ -14,6 +14,6 @@ public class MyActor extends UntypedAbstractActor {
     public void onReceive(Object o) throws Throwable {
         if("hello".equals(o)) {
             child.tell("Hello World!", getSelf());
-        }
+        } else System.out.println(o.toString());
     }
 }
