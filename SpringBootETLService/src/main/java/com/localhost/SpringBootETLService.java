@@ -1,11 +1,13 @@
 package com.localhost;
 
+import com.localhost.etl.Extractor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -25,12 +27,18 @@ public class SpringBootETLService {
     @Value("${file.path}")
     private String filePathString;
 
+    @Autowired
+     private Extractor extractor;
+
     @Scheduled(cron = "0 * * * * *")
     public void runService() {
         try {
             FileInputStream fis = new FileInputStream(new File(filePathString));
             XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);
+
+
             XSSFSheet mySheet = myWorkBook.getSheetAt(0);
+
             Iterator<Row> rowIterator = mySheet.iterator();
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
