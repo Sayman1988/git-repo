@@ -1,0 +1,31 @@
+server:
+  port: 8761
+  context-path: /registry
+
+spring:
+  application:
+    name: registry
+#  cloud:
+#    config:
+#      uri: http://config-server:8888
+#      fail-fast: true
+#      password: ${CONFIG_SERVER_PASSWORD}
+#      username: o.serohin
+
+eureka:
+  server:
+    enable-self-preservation: false
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    leaseRenewalIntervalInSeconds: 10
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+logging:
+  level:
+    com:
+      netflix: DEBUG
