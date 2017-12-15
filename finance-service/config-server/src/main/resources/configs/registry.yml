@@ -1,0 +1,24 @@
+#External configuration for Service Registry
+
+server:
+  port: 8761
+  context-path: /registry
+
+eureka:
+  server:
+    enable-self-preservation: false
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    ipAddress: 127.0.0.1
+    leaseRenewalIntervalInSeconds: 10
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+
+logging:
+  level:
+    com:
+      netflix: DEBUG

@@ -3,14 +3,10 @@ spring:
     config:
       server:
         native:
-          search-locations: classpath:/services
+          search-locations: classpath:/configs
   profiles:
      active: native
 
 server:
   port: 8888
   context-path: /config-server
-
-security:
-  user:
-    password: ${CONFIG_SERVER_PASSWORD}

@@ -1,32 +1,9 @@
-server:
-  port: 8761
-  context-path: /registry
-
+#Service Registry properties are grabbed from External Configuration Server
+#Be aware about Configuration Server should be up before starting Registry Server
 spring:
   application:
     name: registry
-#  cloud:
-#    config:
-#      uri: http://config-server:8888
-#      fail-fast: true
-#      password: ${CONFIG_SERVER_PASSWORD}
-#      username: o.serohin
-
-eureka:
-  server:
-    enable-self-preservation: false
-  instance:
-    hostname: localhost
-    prefer-ip-address: true
-    ipAddress: 127.0.0.1
-    leaseRenewalIntervalInSeconds: 10
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-
-logging:
-  level:
-    com:
-      netflix: DEBUG
+  cloud:
+    config:
+      uri: http://localhost:8888/config-server
+      fail-fast: true

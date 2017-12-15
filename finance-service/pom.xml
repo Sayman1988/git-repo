@@ -6,7 +6,7 @@
 
     <groupId>com.finance</groupId>
     <artifactId>finance-service</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>The Finance Service :: Aggregator</name>
