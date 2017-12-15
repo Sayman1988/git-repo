@@ -1,0 +1,9 @@
+#Service Registry properties are grabbed from External Configuration Server
+#Be aware about Configuration Server should be up before starting Registry Server
+spring:
+  application:
+    name: registry
+  cloud:
+    config:
+      uri: http://localhost:8888/config-server
+      fail-fast: true

@@ -1,0 +1,56 @@
+#External configuration for Gateway
+
+server:
+  port: 4000
+  context-path: /gateway
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    ipAddress: 127.0.0.1
+    leaseRenewalIntervalInSeconds: 10
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/registry/eureka
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
+
+zuul:
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+
+#  routes:
+#    account-service:
+#        path: /accounts/**
+#        serviceId: account-service
+#        stripPrefix: false
+#        sensitiveHeaders:
+
+#    statistics-service:
+#        path: /statistics/**
+#        serviceId: statistics-service
+#        stripPrefix: false
+#        sensitiveHeaders:
+
+#    notification-service:
+#        path: /notifications/**
+#        serviceId: notification-service
+#        stripPrefix: false
+#        sensitiveHeaders:
+
+logging:
+  level:
+    com:
+      netflix: DEBUG

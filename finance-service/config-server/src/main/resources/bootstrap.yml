@@ -1,0 +1,17 @@
+server:
+  port: 8888
+  context-path: /config-server
+
+spring:
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/configs
+  profiles:
+     active: native
+
+logging:
+  level:
+    com:
+      netflix: DEBUG
