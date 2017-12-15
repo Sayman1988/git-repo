@@ -5,13 +5,14 @@ server:
   context-path: /registry
 
 eureka:
-  server:
-    enable-self-preservation: false
   instance:
     hostname: localhost
     prefer-ip-address: true
     ipAddress: 127.0.0.1
     leaseRenewalIntervalInSeconds: 10
+  server:
+    enable-self-preservation: false
+    waitTimeInMsWhenSyncEmpty: 0
   client:
     registerWithEureka: false
     fetchRegistry: false
