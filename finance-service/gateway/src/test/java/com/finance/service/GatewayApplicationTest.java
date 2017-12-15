@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = GatewayApplication.class)
-public class GatewayApplicationTests {
+public class GatewayApplicationTest {
 
 	@Autowired
 	private ApplicationContext context;
