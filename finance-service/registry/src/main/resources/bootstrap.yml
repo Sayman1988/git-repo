@@ -18,6 +18,7 @@ eureka:
   instance:
     hostname: localhost
     prefer-ip-address: true
+    ipAddress: 127.0.0.1
     leaseRenewalIntervalInSeconds: 10
   client:
     registerWithEureka: false

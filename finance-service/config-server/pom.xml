@@ -6,9 +6,9 @@
 	<groupId>com.projectx.config</groupId>
 	<artifactId>config-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
 
-	<name>config-server</name>
+	<name>The Finance Service :: Config Server</name>
+	<description>Externalized configuration server</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
