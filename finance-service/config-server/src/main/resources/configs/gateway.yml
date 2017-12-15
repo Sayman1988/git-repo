@@ -9,6 +9,8 @@ eureka:
     prefer-ip-address: true
     ipAddress: 127.0.0.1
     leaseRenewalIntervalInSeconds: 10
+    statusPageUrlPath: ${server.context-path}/info
+    healthCheckUrl: ${server.context-path}/health
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/registry/eureka
