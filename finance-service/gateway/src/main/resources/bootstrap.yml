@@ -1,0 +1,9 @@
+#Gateway properties are grabbed from External Configuration Server
+#Be aware about Configuration Server should be up before starting Gateway
+spring:
+  application:
+    name: gateway
+  cloud:
+    config:
+      uri: http://localhost:8888/config-server
+      fail-fast: true
