@@ -16,6 +16,7 @@
         <module>config-server</module>
         <module>registry</module>
         <module>gateway</module>
+        <module>monitoring</module>
     </modules>
 
 </project>
