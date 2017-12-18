@@ -7,6 +7,7 @@ server:
 eureka:
   instance:
     hostname: localhost
+    port: 8761
     prefer-ip-address: true
     ipAddress: 127.0.0.1
     leaseRenewalIntervalInSeconds: 10
@@ -17,7 +18,7 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://localhost:8761/registry/eureka
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/registry/eureka
 
 logging:
   level:
