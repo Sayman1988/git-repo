@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 /**
  * @author Oleksandr Serohin
  */
-
 @RestController
 public class NotificationDemoController {
 
