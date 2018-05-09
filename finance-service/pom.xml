@@ -17,6 +17,8 @@
         <module>registry</module>
         <module>gateway</module>
         <module>monitoring</module>
+        <module>finance-service-mock</module>
+        <module>notification-service-mock</module>
     </modules>
 
 </project>

@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.finance.service</groupId>
+    <groupId>com.monitoring.service</groupId>
     <artifactId>monitoring</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
@@ -55,6 +55,7 @@
             <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
         </dependency>
 
+        <!-- For testing purposes -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.config.server</groupId>
-	<artifactId>config-server</artifactId>
+	<groupId>com.finance.service</groupId>
+	<artifactId>finance-service-mock</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>The Finance Service :: Config Server</name>
-	<description>Externalized configuration server</description>
+	<name>The Finance Service :: Mocked Finance Service</name>
+	<description>Mocked finance service to demonstrate Spring Cloud features</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -38,7 +38,34 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-server</artifactId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zuul</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-netflix-hystrix-stream</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+		</dependency>
+
+       <!-- For testing purposes -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -48,7 +75,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<finalName>config-server</finalName>
+					<finalName>finance-service-mock</finalName>
 				</configuration>
 			</plugin>
 		</plugins>
