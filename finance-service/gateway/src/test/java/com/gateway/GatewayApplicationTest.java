@@ -1,4 +1,4 @@
-package com.finance.service;
+package com.gateway;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

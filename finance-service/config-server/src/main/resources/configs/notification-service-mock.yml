@@ -1,8 +1,8 @@
-#External configuration for Gateway
+#External configuration for Finance Service
 
 server:
-  port: 4000
-  context-path: /gateway
+  port: 6000
+  context-path: /notification-service
 
 eureka:
   instance:
@@ -28,25 +28,6 @@ hystrix:
 ribbon:
   ReadTimeout: 20000
   ConnectTimeout: 20000
-
-zuul:
-  ignoredServices: '*'
-  host:
-    connect-timeout-millis: 20000
-    socket-timeout-millis: 20000
-
-  routes:
-    finance-service:
-        path: /finance-service/**
-        serviceId: finance-service-mock
-        stripPrefix: false
-        sensitiveHeaders:
-
-    notification-service:
-        path: /notification-service/**
-        serviceId: notification-service-mock
-        stripPrefix: false
-        sensitiveHeaders:
 
 logging:
   level:

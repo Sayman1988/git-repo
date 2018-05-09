@@ -4,23 +4,9 @@ server:
   port: 9000
   context-path: /monitoring
 
-eureka:
-  instance:
-    prefer-ip-address: true
-    ipAddress: 127.0.0.1
-    leaseRenewalIntervalInSeconds: 10
-    statusPageUrlPath: ${server.context-path}/info
-    healthCheckUrl: ${server.context-path}/health
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/registry/eureka
-
 turbine:
   stream:
     port: 8989
-  aggregator:
-    clusterConfig: HYSTRIX-AGGREGATE
-  appConfig: HYSTRIX-AGGREGATE
 
 logging:
   level:
