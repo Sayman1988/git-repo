@@ -7,10 +7,6 @@ server:
 turbine:
   stream:
     port: 8989
-# TODO find why cluster name doesn't affect on monitored service in Turbine
-#  aggregator:
-#    clusterConfig: GATEWAY
-# appConfig: gateway
 
 logging:
   level:
