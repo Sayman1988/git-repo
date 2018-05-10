@@ -28,8 +28,3 @@ hystrix:
 ribbon:
   ReadTimeout: 20000
   ConnectTimeout: 20000
-
-logging:
-  level:
-    com:
-      netflix: DEBUG

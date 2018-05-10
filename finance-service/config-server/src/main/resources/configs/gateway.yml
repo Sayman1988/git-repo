@@ -14,6 +14,7 @@ eureka:
     statusPageUrlPath: ${server.context-path}/info
     healthCheckUrl: ${server.context-path}/health
   client:
+    registryFetchIntervalSeconds: 5
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/registry/eureka
 
@@ -47,8 +48,3 @@ zuul:
         serviceId: notification-service-mock
         stripPrefix: false
         sensitiveHeaders:
-
-logging:
-  level:
-    com:
-      netflix: DEBUG

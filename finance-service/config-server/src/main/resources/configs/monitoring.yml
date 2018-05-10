@@ -7,8 +7,3 @@ server:
 turbine:
   stream:
     port: 8989
-
-logging:
-  level:
-    com:
-      netflix: DEBUG
