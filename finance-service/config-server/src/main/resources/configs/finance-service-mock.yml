@@ -1,4 +1,4 @@
-#External configuration for Finance Service
+# External configuration for Finance Service
 
 server:
   port: 5050
@@ -6,16 +6,11 @@ server:
 
 eureka:
   instance:
-    hostname: localhost
-    port: 8761
-    prefer-ip-address: true
-    ipAddress: 127.0.0.1
     leaseRenewalIntervalInSeconds: 10
-    statusPageUrlPath: ${server.context-path}/info
-    healthCheckUrl: ${server.context-path}/health
   client:
+    registryFetchIntervalSeconds: 5
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/registry/eureka
+      defaultZone: http://registry:8761/registry/eureka
 
 hystrix:
   command:
@@ -29,7 +24,6 @@ ribbon:
   ReadTimeout: 20000
   ConnectTimeout: 20000
 
-logging:
-  level:
-    com:
-      netflix: DEBUG
+spring:
+  rabbitmq:
+    host: rabbitmq

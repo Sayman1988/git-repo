@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 /**
  * @author Oleksandr Serohin
  */
-
 @RestController
 public class FinanceDemoController {
 
@@ -22,7 +21,7 @@ public class FinanceDemoController {
     @GetMapping(path = "/hello")
     @HystrixCommand(fallbackMethod = "defaultFallbackMethod")
     public String hello() {
-        return getCanonicalClassName() + " | Hello, " + System.getenv("USERNAME") + "!";
+        return getCanonicalClassName() + " | Hello, " + getUsername() + "!";
     }
 
     private String defaultFallbackMethod() {
@@ -31,5 +30,10 @@ public class FinanceDemoController {
 
     private String getCanonicalClassName(){
         return this.getClass().getCanonicalName().toUpperCase();
+    }
+
+    private String getUsername(){
+        final String username = System.getenv("USERNAME");
+        return username == null ? "Anonymous" : username;
     }
 }

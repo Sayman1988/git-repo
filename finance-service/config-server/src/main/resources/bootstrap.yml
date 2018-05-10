@@ -10,8 +10,3 @@ spring:
           search-locations: classpath:/configs
   profiles:
      active: native
-
-logging:
-  level:
-    com:
-      netflix: DEBUG

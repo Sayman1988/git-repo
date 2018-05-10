@@ -1,0 +1,95 @@
+version: '2.1'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: always
+    ports:
+      - 15672:15672
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  config-server:
+    image: $DOCKER_USERNAME/docker-repo:finance-service_config-server
+    restart: always
+    ports:
+      - 8888:8888
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  registry:
+    image: $DOCKER_USERNAME/docker-repo:finance-service_registry
+    restart: always
+    ports:
+      - 8761:8761
+    depends_on:
+      config-server:
+        condition: service_healthy
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  gateway:
+    image: $DOCKER_USERNAME/docker-repo:finance-service_gateway
+    restart: always
+    ports:
+      - 4000:4000
+    depends_on:
+      config-server:
+        condition: service_healthy
+      registry:
+         condition: service_healthy
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  finance-service-mock:
+    image: $DOCKER_USERNAME/docker-repo:finance-service_finance-service-mock
+    restart: always
+    ports:
+      - 5050:5050
+    depends_on:
+      config-server:
+        condition: service_healthy
+      registry:
+         condition: service_healthy
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  notification-service-mock:
+    image: $DOCKER_USERNAME/docker-repo:finance-service_notification-service-mock
+    restart: always
+    ports:
+      - 5055:5055
+    depends_on:
+      config-server:
+        condition: service_healthy
+      registry:
+         condition: service_healthy
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  monitoring:
+    image: $DOCKER_USERNAME/docker-repo:finance-service_monitoring
+    restart: always
+    ports:
+      - 9000:9000
+      - 8989:8989
+    depends_on:
+      config-server:
+        condition: service_healthy
+      registry:
+         condition: service_healthy
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"

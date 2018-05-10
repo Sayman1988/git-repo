@@ -7,7 +7,7 @@
 	<artifactId>notification-service-mock</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>The Finance Service :: Mocked Notification Service</name>
+	<name>The Finance Service :: Notification Service (Mocked)</name>
 	<description>Mocked notification service to demonstrate Spring Cloud features</description>
 
 	<parent>
