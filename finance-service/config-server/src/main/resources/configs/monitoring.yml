@@ -1,4 +1,4 @@
-#External configuration for Monitoring
+# External configuration for Monitoring
 
 server:
   port: 9000
@@ -7,3 +7,17 @@ server:
 turbine:
   stream:
     port: 8989
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    prefer-ip-address: true
+    ipAddress: 127.0.0.1
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://registry:8761/registry/eureka
+
+spring:
+  rabbitmq:
+    host: rabbitmq

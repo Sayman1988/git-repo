@@ -41,6 +41,8 @@ services:
     depends_on:
       config-server:
         condition: service_healthy
+      registry:
+         condition: service_healthy
     logging:
       options:
         max-size: "10m"
@@ -54,6 +56,8 @@ services:
     depends_on:
       config-server:
         condition: service_healthy
+      registry:
+         condition: service_healthy
     logging:
       options:
         max-size: "10m"
@@ -67,6 +71,8 @@ services:
     depends_on:
       config-server:
         condition: service_healthy
+      registry:
+         condition: service_healthy
     logging:
       options:
         max-size: "10m"
@@ -81,6 +87,8 @@ services:
     depends_on:
       config-server:
         condition: service_healthy
+      registry:
+         condition: service_healthy
     logging:
       options:
         max-size: "10m"

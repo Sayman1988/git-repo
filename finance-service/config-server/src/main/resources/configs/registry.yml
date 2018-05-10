@@ -1,4 +1,4 @@
-#External configuration for Service Registry
+# External configuration for Service Registry
 
 server:
   port: 8761
@@ -6,16 +6,12 @@ server:
 
 eureka:
   instance:
-    hostname: localhost
-    port: 8761
+    leaseRenewalIntervalInSeconds: 10
     prefer-ip-address: true
     ipAddress: 127.0.0.1
-    leaseRenewalIntervalInSeconds: 10
   server:
     enable-self-preservation: false
     waitTimeInMsWhenSyncEmpty: 0
   client:
     registerWithEureka: false
     fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/registry/eureka
