@@ -67,7 +67,7 @@ services:
     image: $DOCKER_USERNAME/docker-repo:finance-service_notification-service-mock
     restart: always
     ports:
-      - 6000:6000
+      - 5055:5055
     depends_on:
       config-server:
         condition: service_healthy
@@ -82,7 +82,7 @@ services:
     image: $DOCKER_USERNAME/docker-repo:finance-service_monitoring
     restart: always
     ports:
-      - 9000:8080
+      - 9000:9000
       - 8989:8989
     depends_on:
       config-server:

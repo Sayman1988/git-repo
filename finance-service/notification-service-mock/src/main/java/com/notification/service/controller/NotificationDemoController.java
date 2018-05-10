@@ -21,7 +21,7 @@ public class NotificationDemoController {
     @GetMapping(path = "/hello")
     @HystrixCommand(fallbackMethod = "defaultFallbackMethod")
     public String hello() {
-        return getCanonicalClassName() + " | Hello, " + System.getenv("USERNAME") + "!";
+        return getCanonicalClassName() + " | Hello, " + getUsername() + "!";
     }
 
     private String defaultFallbackMethod() {
@@ -30,5 +30,10 @@ public class NotificationDemoController {
 
     private String getCanonicalClassName(){
         return this.getClass().getCanonicalName().toUpperCase();
+    }
+
+    private String getUsername(){
+        final String username = System.getenv("USERNAME");
+        return username == null ? "Anonymous" : username;
     }
 }
