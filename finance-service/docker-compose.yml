@@ -1,29 +1,26 @@
-version: '2.1'
 services:
   rabbitmq:
-    ports:
-      - 15672:15672
+    image: rabbitmq:3-management
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
 
-  config:
-    build: config
+  config-server:
+    image: $DOCKER_USERNAME/docker-repo:finance-service_config-server
+    restart: always
     ports:
-      - 8888:8888
+      - "8888:8888"
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
 
   registry:
-    build: registry
-
-  gateway:
-    build: gateway
-
-  finance-service-mock:
-    build: finance-service
-    ports:
-      - 5050:5050
-
-  notification-service-mock:
-    build: notification-service
-    ports:
-      - 6000:6000
-
-  monitoring:
-    build: monitoring
+    image: $DOCKER_USERNAME/docker-repo:finance-service_registry
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
