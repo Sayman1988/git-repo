@@ -20,11 +20,24 @@ services:
         max-size: "10m"
         max-file: "10"
 
-  registry:
-    image: $DOCKER_USERNAME/docker-repo:finance-service_registry
+  registry-peer-1:
+    image: $DOCKER_USERNAME/docker-repo:finance-service_registry-peer-1
     restart: always
     ports:
       - 8761:8761
+    depends_on:
+      config-server:
+        condition: service_healthy
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  registry-peer-2:
+    image: $DOCKER_USERNAME/docker-repo:finance-service_registry-peer-1
+    restart: always
+    ports:
+      - 8762:8762
     depends_on:
       config-server:
         condition: service_healthy
@@ -41,14 +54,16 @@ services:
     depends_on:
       config-server:
         condition: service_healthy
-      registry:
+      registry-peer-1:
+         condition: service_healthy
+      registry-peer-2:
          condition: service_healthy
     logging:
       options:
         max-size: "10m"
         max-file: "10"
 
-  finance-service-mock:
+  finance-service-mock-instance-1:
     image: $DOCKER_USERNAME/docker-repo:finance-service_finance-service-mock
     restart: always
     ports:
@@ -56,12 +71,31 @@ services:
     depends_on:
       config-server:
         condition: service_healthy
-      registry:
+      registry-peer-1:
+         condition: service_healthy
+      registry-peer-2:
          condition: service_healthy
     logging:
       options:
         max-size: "10m"
         max-file: "10"
+
+#  finance-service-mock-instance-2:
+#    image: $DOCKER_USERNAME/docker-repo:finance-service_finance-service-mock
+#   restart: always
+#    ports:
+#      - 5051:8080
+#    depends_on:
+#      config-server:
+#        condition: service_healthy
+#      registry-peer-1:
+#         condition: service_healthy
+#      registry-peer-2:
+#         condition: service_healthy
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
 
   notification-service-mock:
     image: $DOCKER_USERNAME/docker-repo:finance-service_notification-service-mock
@@ -71,7 +105,9 @@ services:
     depends_on:
       config-server:
         condition: service_healthy
-      registry:
+      registry-peer-1:
+         condition: service_healthy
+      registry-peer-2:
          condition: service_healthy
     logging:
       options:
@@ -86,8 +122,10 @@ services:
       - 8989:8989
     depends_on:
       config-server:
+       condition: service_healthy
+      registry-peer-1:
         condition: service_healthy
-      registry:
+      registry-peer-2:
          condition: service_healthy
     logging:
       options:

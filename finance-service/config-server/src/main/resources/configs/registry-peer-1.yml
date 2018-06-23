@@ -13,5 +13,5 @@ eureka:
     enable-self-preservation: false
     waitTimeInMsWhenSyncEmpty: 0
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://registry-peer-2:8762/registry/eureka/

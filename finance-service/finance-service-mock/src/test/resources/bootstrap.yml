@@ -6,3 +6,9 @@ spring:
   cloud:
     config:
       enabled: false
+  application:
+    name: finance-service-mock-test
+    instance_id: test_instance_id
+
+random:
+  value: test_value

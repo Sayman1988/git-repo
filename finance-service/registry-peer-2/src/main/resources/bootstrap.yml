@@ -2,7 +2,7 @@
 #Be aware about Configuration Server should be up before starting Registry Server
 spring:
   application:
-    name: registry
+    name: registry-peer-2
   cloud:
     config:
       uri: http://config-server:8888/config-server

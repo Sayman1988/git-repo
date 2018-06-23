@@ -10,7 +10,7 @@ eureka:
   client:
     registryFetchIntervalSeconds: 5
     serviceUrl:
-      defaultZone: http://registry:8761/registry/eureka
+      defaultZone: http://registry-peer-1:8761/registry/eureka, http://registry-peer-2:8762/registry/eureka
 
 hystrix:
   command:
