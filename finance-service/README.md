@@ -1,10 +1,11 @@
 # The Spring Cloud Infrastructure: demo services
 This project is a smth like demo to show some Spring Cloud features, such as 
-- Service Discovery (Registry)
+- Service Discovery (Registry) with [Peer awareness](https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-eureka-server.html#spring-cloud-eureka-server-peer-awareness)
 - Edge proxy service
 - Externalized configuration storage
 - Circuit Breaker
 - Load Balancing
+- Services with multiple instances
 - Metrics Stream aggregation
 - Monitoring dashboard
 
@@ -15,7 +16,8 @@ This project is a smth like demo to show some Spring Cloud features, such as
 
 The project has parent aggregator which obtains next MOJOs (components):
 - Config Server
-- Registry
+- Registry Peer 1
+- Registry Peer 2
 - Gateway
 - Monitoring
 - Finance Service (Mocked for Turbine stream aggregator)
@@ -44,15 +46,16 @@ Be aware, any changes in project MOJOs will have affects on created docker image
 
 When all components will be Up and Running, you will be able to check exposed endpoints to test Spring Cloud features:
 1) http://127.0.0.1:8761/registry - Eureka Dashboard with registered services list.
-2) http://127.0.0.1:4000/gateway - Edge Proxy service with registered `finance-service` and `notification-service` routes
-3) http://127.0.0.1:4000/gateway/finance-service/ - Finance service index page
-4) http://127.0.0.1:4000/gateway/finance-service/hello - Finance service greeting page
-5) http://127.0.0.1:4000/gateway/finance-service/hystrix.stream - Finance service Hystrix stream
-6) http://127.0.0.1:4000/gateway/notification-service/ - Notification service index page
-7) http://127.0.0.1:4000/gateway/notification-service/hello - Notification service greeting page
-8) http://127.0.0.1:4000/gateway/notification-service/hystrix.stream - Notification service Hystrix stream
-9) http://127.0.0.1:9000/monitoring/hystrix - Hystrix Dashboard (paste Turbine stream link `http://localhost:8989/turbine.stream` on the form)
-10) http://localhost:15672 - RabbitMq management (default login/password: guest/guest)
+2) http://127.0.0.1:8762/registry - Synchronized Eureka with a same service list to perform resilience.
+3) http://127.0.0.1:4000/gateway - Edge Proxy service with registered `finance-service` and `notification-service` routes
+4) http://127.0.0.1:4000/gateway/finance-service/ - Finance service index page
+5) http://127.0.0.1:4000/gateway/finance-service/hello - Finance service greeting page
+6) http://127.0.0.1:4000/gateway/finance-service/hystrix.stream - Finance service Hystrix stream
+7) http://127.0.0.1:4000/gateway/notification-service/ - Notification service index page
+8) http://127.0.0.1:4000/gateway/notification-service/hello - Notification service greeting page
+9) http://127.0.0.1:4000/gateway/notification-service/hystrix.stream - Notification service Hystrix stream
+10) http://127.0.0.1:9000/monitoring/hystrix - Hystrix Dashboard (paste Turbine stream link `http://localhost:8989/turbine.stream` on the form)
+11) http://localhost:15672 - RabbitMq management (default login/password: guest/guest)
 
 ## Useful commands
 - `docker stop $(docker ps -a -q)` - stop all running docker containers
