@@ -1,7 +1,6 @@
 # External configuration for Gateway
 
 server:
-  port: 4000
   context-path: /gateway
 
 eureka:
@@ -12,7 +11,7 @@ eureka:
   client:
     registryFetchIntervalSeconds: 5
     serviceUrl:
-      defaultZone: http://registry-peer-1:8761/registry/eureka, http://registry-peer-2:8762/registry/eureka
+      defaultZone: http://registry-peer-1:8080/registry/eureka
 
 hystrix:
   command:

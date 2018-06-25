@@ -1,7 +1,6 @@
 # External configuration for Service Registry
 
 server:
-  port: 8762
   context-path: /registry
 
 eureka:
@@ -14,4 +13,4 @@ eureka:
     waitTimeInMsWhenSyncEmpty: 0
   client:
     serviceUrl:
-      defaultZone: http://registry-peer-1:8761/registry/eureka/
+      defaultZone: http://registry-peer-1:8080/registry/eureka/

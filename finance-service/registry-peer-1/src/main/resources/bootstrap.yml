@@ -5,5 +5,5 @@ spring:
     name: registry-peer-1
   cloud:
     config:
-      uri: http://config-server:8888/config-server
+      uri: http://config-server:8080/config-server
       fail-fast: true

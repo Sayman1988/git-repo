@@ -1,7 +1,6 @@
 # External configuration for Notification Service
 
 server:
-  port: 5055
   context-path: /notification-service
 
 eureka:
@@ -10,7 +9,7 @@ eureka:
   client:
     registryFetchIntervalSeconds: 5
     serviceUrl:
-      defaultZone: http://registry-peer-1:8761/registry/eureka, http://registry-peer-2:8762/registry/eureka
+      defaultZone: http://registry-peer-2:8080/registry/eureka
 
 hystrix:
   command:

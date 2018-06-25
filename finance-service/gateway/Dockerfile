@@ -2,6 +2,6 @@ FROM java:8-jre
 MAINTAINER Oleksandr Serohin <aleks.seregin@gmail.com>
 
 ADD ./target/gateway.jar /app/
-CMD ["java", "-Xmx200m", "-jar", "/app/gateway.jar"]
+ADD ./wait-for-it.sh ./
 
-EXPOSE 4000
+EXPOSE 8080
