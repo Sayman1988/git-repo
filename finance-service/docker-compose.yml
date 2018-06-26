@@ -42,10 +42,8 @@ services:
       - 8762:8080
     depends_on:
       - "config-server"
-      - "registry-peer-1"
     command: >
         bash -c "./wait-for-it.sh config-server:8080 -t 180
-        && ./wait-for-it.sh registry-peer-1:8080 -t 180
         && java -Xmx200m -jar /app/registry-peer-2.jar"
     logging:
       options:
@@ -109,30 +107,11 @@ services:
         max-size: "10m"
         max-file: "10"
 
-  notification-service-mock-instance-1:
+  notification-service-mock:
     image: $DOCKER_USERNAME/docker-repo:finance-service_notification-service-mock
     restart: always
     ports:
       - 5055:8080
-    depends_on:
-      - "config-server"
-      - "registry-peer-1"
-      - "registry-peer-2"
-    command: >
-        bash -c "./wait-for-it.sh config-server:8080 -t 180
-        && ./wait-for-it.sh registry-peer-1:8080 -t 180
-        && ./wait-for-it.sh registry-peer-2:8080 -t 180
-        && java -Xmx200m -jar /app/notification-service-mock.jar"
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
-
-  notification-service-mock-instance-2:
-    image: $DOCKER_USERNAME/docker-repo:finance-service_notification-service-mock
-    restart: always
-    ports:
-      - 5056:8080
     depends_on:
       - "config-server"
       - "registry-peer-1"

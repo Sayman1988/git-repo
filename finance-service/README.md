@@ -4,8 +4,7 @@ This project is a smth like demo to show some Spring Cloud features, such as
 - Edge proxy service
 - Externalized configuration storage
 - Circuit Breaker
-- Load Balancing
-- Services with multiple instances
+- Load Balancing between service instances
 - Metrics Stream aggregation
 - Monitoring dashboard
 
@@ -36,7 +35,7 @@ export DOCKER_REPO=docker-repo
 ```
 
 **Note**: there are no defaults for **`DOCKER_USERNAME`** and **`DOCKER_PASSWORD`** variables, 
-so **you must provide it**. But for the **`DOCKER_REPO`** variable the default value is `docker-repo`.
+so **you must provide it**. For the **`DOCKER_REPO`** variable the default value is `docker-repo`.
 
 - Run `docker-build-images.sh` script to build and provision docker images to the provided Docker Cloud repository.
 Be aware, any changes in project MOJOs will have affects on created docker images.
@@ -47,22 +46,25 @@ Be aware, any changes in project MOJOs will have affects on created docker image
 When all components will be Up and Running, you will be able to check exposed endpoints to test Spring Cloud features:
 1) http://127.0.0.1:8761/registry - Eureka Dashboard with registered services list.
 2) http://127.0.0.1:8762/registry - Synchronized Eureka with a same service list to perform resilience.
-3) http://127.0.0.1:4000/gateway - Edge Proxy service with registered `finance-service` and `notification-service` routes
-4) http://127.0.0.1:4000/gateway/finance-service/ - Finance service index page
-5) http://127.0.0.1:4000/gateway/finance-service/hello - Finance service greeting page
-6) http://127.0.0.1:4000/gateway/finance-service/hystrix.stream - Finance service Hystrix stream
-7) http://127.0.0.1:4000/gateway/notification-service/ - Notification service index page
-8) http://127.0.0.1:4000/gateway/notification-service/hello - Notification service greeting page
-9) http://127.0.0.1:4000/gateway/notification-service/hystrix.stream - Notification service Hystrix stream
-10) http://127.0.0.1:9000/monitoring/hystrix - Hystrix Dashboard (paste Turbine stream link `http://localhost:8989/turbine.stream` on the form)
-11) http://localhost:15672 - RabbitMq management (default login/password: guest/guest)
+3) http://127.0.0.1:4000/gateway/finance-service/ - Finance service index page
+4) http://127.0.0.1:4000/gateway/finance-service/hello - Finance service greeting page
+5) http://127.0.0.1:4000/gateway/finance-service/hystrix.stream - Finance service Hystrix stream
+6) http://127.0.0.1:4000/gateway/notification-service/ - Notification service index page
+7) http://127.0.0.1:4000/gateway/notification-service/hello - Notification service greeting page
+8) http://127.0.0.1:4000/gateway/notification-service/hystrix.stream - Notification service Hystrix stream
+9) http://127.0.0.1:9000/monitoring/hystrix - Hystrix Dashboard (paste Turbine stream link `http://localhost:8989/turbine.stream` on the form)
+10) http://localhost:15672 - RabbitMq management (default login/password: guest/guest)
 
 ## Useful commands
+- `docker ps` - see all available docker containers
 - `docker stop $(docker ps -a -q)` - stop all running docker containers
 - `docker rm $(docker ps -a -q)` - remove all available docker containers
-- `docker build -t os/finance-service_registry ./registry` - build Registry docker image with `os/finance-service_registry` tag
+- `docker images` - see all available docker images
+- `docker rmi $(docker images -q) --force` - remove all available docker images
+- `docker build -t os/finance-service_registry-peer-1 ./registry-peer-1` - build Registry docker image with `os/finance-service_registry-peer-1` tag
 - `docker tag os/finance-service_registry sayman1988docker-repo:finance-service_registry` - change docker image tag
-- `docker push $DOCKER_USERNAME/docker-repo:finance-service_registry` - push docker image to the Docker Cloud repo
+- `docker push $DOCKER_USERNAME/docker-repo:finance-service_registry-peer-1` - push docker image to the Docker Cloud repo
+- `winpty docker exec -it 79 bash` - run Bash inside the particular Docker container from the Windows machine
 - `docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD` - login in Docker Cloud repo
 - `./mvnw -f notification-service-mock/pom.xml clean install` - build project MOJO
 - `./mvnw -f config-server/pom.xml spring-boot:run` - run project MOJO
