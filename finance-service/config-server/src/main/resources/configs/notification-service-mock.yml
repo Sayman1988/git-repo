@@ -6,6 +6,9 @@ server:
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 10
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    statusPageUrlPath: ${server.context-path}/health
+    healthCheckUrlPath: ${server.context-path}/health
   client:
     registryFetchIntervalSeconds: 5
     serviceUrl:

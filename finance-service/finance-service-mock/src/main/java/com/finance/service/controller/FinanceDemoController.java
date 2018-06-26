@@ -12,8 +12,6 @@ import java.time.LocalDateTime;
  */
 @RestController
 public class FinanceDemoController {
-    /*TODO EXPOSE ALL DOCKER IMAGES FROM 8080 + ENABLE MULTI INSTANTIATION + DEFAULT ZONES
-    * TODO Add zone awareness with Marcos doc*/
     @Value("${spring.application.name}:${spring.application.instance_id:${random.value}}")
     private String instanceId;
 
