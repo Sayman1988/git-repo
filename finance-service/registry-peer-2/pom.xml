@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.registry.service</groupId>
-    <artifactId>registry</artifactId>
+    <artifactId>registry-peer-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>The Finance Service :: Registry</name>
-    <description>Service registry</description>
+    <name>The Finance Service :: Registry Peer 2</name>
+    <description>Service registry, peer 2</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -51,7 +51,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <finalName>registry</finalName>
+                    <finalName>registry-peer-2</finalName>
                 </configuration>
             </plugin>
         </plugins>

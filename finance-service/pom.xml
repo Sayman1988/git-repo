@@ -14,7 +14,8 @@
 
     <modules>
         <module>config-server</module>
-        <module>registry</module>
+        <module>registry-peer-1</module>
+		<module>registry-peer-2</module>
         <module>gateway</module>
         <module>monitoring</module>
         <module>finance-service-mock</module>

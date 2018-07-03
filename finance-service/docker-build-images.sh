@@ -15,7 +15,8 @@ echo "====================================================================="
 
 component_list=(
                 config-server             # SPRING CLOUD CONFIG SERVICE
-                registry                  # REGISTRY
+                registry-peer-1           # REGISTRY PEER 1
+                registry-peer-2           # REGISTRY PEER 1
                 gateway                   # GATEWAY
                 monitoring                # MONITORING
                 finance-service-mock      # FINANCE SERVICE

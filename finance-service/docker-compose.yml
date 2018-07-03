@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3'
 services:
   rabbitmq:
     image: rabbitmq:3-management
@@ -14,20 +14,37 @@ services:
     image: $DOCKER_USERNAME/docker-repo:finance-service_config-server
     restart: always
     ports:
-      - 8888:8888
+      - 8888:8080
     logging:
       options:
         max-size: "10m"
         max-file: "10"
 
-  registry:
-    image: $DOCKER_USERNAME/docker-repo:finance-service_registry
+  registry-peer-1:
+    image: $DOCKER_USERNAME/docker-repo:finance-service_registry-peer-1
     restart: always
     ports:
-      - 8761:8761
+      - 8761:8080
     depends_on:
-      config-server:
-        condition: service_healthy
+      - "config-server"
+    command: >
+        bash -c "./wait-for-it.sh config-server:8080 -t 180
+        && java -Xmx200m -jar /app/registry-peer-1.jar"
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  registry-peer-2:
+    image: $DOCKER_USERNAME/docker-repo:finance-service_registry-peer-2
+    restart: always
+    ports:
+      - 8762:8080
+    depends_on:
+      - "config-server"
+    command: >
+        bash -c "./wait-for-it.sh config-server:8080 -t 180
+        && java -Xmx200m -jar /app/registry-peer-2.jar"
     logging:
       options:
         max-size: "10m"
@@ -37,27 +54,54 @@ services:
     image: $DOCKER_USERNAME/docker-repo:finance-service_gateway
     restart: always
     ports:
-      - 4000:4000
+      - 4000:8080
     depends_on:
-      config-server:
-        condition: service_healthy
-      registry:
-         condition: service_healthy
+      - "config-server"
+      - "registry-peer-1"
+      - "registry-peer-2"
+    command: >
+        bash -c "./wait-for-it.sh config-server:8080 -t 180
+        && ./wait-for-it.sh registry-peer-1:8080 -t 180
+        && ./wait-for-it.sh registry-peer-2:8080 -t 180
+        && java -Xmx200m -jar /app/gateway.jar"
     logging:
       options:
         max-size: "10m"
         max-file: "10"
 
-  finance-service-mock:
+  finance-service-mock-instance-1:
     image: $DOCKER_USERNAME/docker-repo:finance-service_finance-service-mock
     restart: always
     ports:
-      - 5050:5050
+      - 5050:8080
     depends_on:
-      config-server:
-        condition: service_healthy
-      registry:
-         condition: service_healthy
+      - "config-server"
+      - "registry-peer-1"
+      - "registry-peer-2"
+    command: >
+        bash -c "./wait-for-it.sh config-server:8080 -t 180
+        && ./wait-for-it.sh registry-peer-1:8080 -t 180
+        && ./wait-for-it.sh registry-peer-2:8080 -t 180
+        && java -Xmx200m -jar /app/finance-service-mock.jar"
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  finance-service-mock-instance-2:
+    image: $DOCKER_USERNAME/docker-repo:finance-service_finance-service-mock
+    restart: always
+    ports:
+      - 5051:8080
+    depends_on:
+      - "config-server"
+      - "registry-peer-1"
+      - "registry-peer-2"
+    command: >
+        bash -c "./wait-for-it.sh config-server:8080 -t 180
+        && ./wait-for-it.sh registry-peer-1:8080 -t 180
+        && ./wait-for-it.sh registry-peer-2:8080 -t 180
+        && java -Xmx200m -jar /app/finance-service-mock.jar"
     logging:
       options:
         max-size: "10m"
@@ -67,12 +111,16 @@ services:
     image: $DOCKER_USERNAME/docker-repo:finance-service_notification-service-mock
     restart: always
     ports:
-      - 5055:5055
+      - 5055:8080
     depends_on:
-      config-server:
-        condition: service_healthy
-      registry:
-         condition: service_healthy
+      - "config-server"
+      - "registry-peer-1"
+      - "registry-peer-2"
+    command: >
+        bash -c "./wait-for-it.sh config-server:8080 -t 180
+        && ./wait-for-it.sh registry-peer-1:8080 -t 180
+        && ./wait-for-it.sh registry-peer-2:8080 -t 180
+        && java -Xmx200m -jar /app/notification-service-mock.jar"
     logging:
       options:
         max-size: "10m"
@@ -82,13 +130,17 @@ services:
     image: $DOCKER_USERNAME/docker-repo:finance-service_monitoring
     restart: always
     ports:
-      - 9000:9000
+      - 9000:8080
       - 8989:8989
     depends_on:
-      config-server:
-        condition: service_healthy
-      registry:
-         condition: service_healthy
+      - "config-server"
+      - "registry-peer-1"
+      - "registry-peer-2"
+    command: >
+        bash -c "./wait-for-it.sh config-server:8080 -t 180
+        && ./wait-for-it.sh registry-peer-1:8080 -t 180
+        && ./wait-for-it.sh registry-peer-2:8080 -t 180
+        && java -Xmx200m -jar /app/monitoring.jar"
     logging:
       options:
         max-size: "10m"

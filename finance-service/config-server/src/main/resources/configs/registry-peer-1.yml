@@ -1,0 +1,18 @@
+# External configuration for Service Registry
+
+server:
+  context-path: /registry
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    prefer-ip-address: true
+    ipAddress: 127.0.0.1
+  server:
+    enable-self-preservation: true
+    waitTimeInMsWhenSyncEmpty: 0
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://registry-peer-2:8080/registry/eureka
