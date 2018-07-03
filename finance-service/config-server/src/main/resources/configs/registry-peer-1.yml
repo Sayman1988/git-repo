@@ -9,7 +9,7 @@ eureka:
     prefer-ip-address: true
     ipAddress: 127.0.0.1
   server:
-    enable-self-preservation: false
+    enable-self-preservation: true
     waitTimeInMsWhenSyncEmpty: 0
   client:
     register-with-eureka: false
