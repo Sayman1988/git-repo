@@ -1,11 +1,14 @@
 package com.finance.service.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 
 /**
  * @author Oleksandr Serohin
@@ -23,7 +26,12 @@ public class FinanceDemoController {
 
     @GetMapping(path = "/hello")
     @HystrixCommand(fallbackMethod = "defaultFallbackMethod")
-    public String hello() {
+    public String hello(@RequestParam(value = "fallback", required = false) String fallback) {
+        if (StringUtils.isNotBlank(fallback)) {
+            // Randomly throw exception to show how works the fallback method
+            randomThrowException();
+        }
+
         return "Hello, " + getUsername() + "! The Finance service instance id: " + instanceId;
     }
 
@@ -38,5 +46,10 @@ public class FinanceDemoController {
     private String getUsername(){
         final String username = System.getenv("USERNAME");
         return username == null ? "Anonymous" : username;
+    }
+
+    private void randomThrowException(){
+        int num = new Random().nextInt(10);
+        if(num < 5) throw new RuntimeException();
     }
 }
