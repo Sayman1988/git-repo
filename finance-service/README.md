@@ -10,6 +10,7 @@ This project is a smth like demo to show some Spring Cloud features, such as
 
 ## Prerequisites
 - Installed Docker on local machine, find all required info [here](https://www.docker.com/).
+- For Windows users only: all Shell scripts inside the project should be configured with LF (\n) line separators.
 
 ## Project structure 
 
