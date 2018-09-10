@@ -1,7 +1,8 @@
 # External configuration for Gateway
 
 server:
-  context-path: /gateway
+  servlet:
+    context-path: /gateway
 
 eureka:
   instance:

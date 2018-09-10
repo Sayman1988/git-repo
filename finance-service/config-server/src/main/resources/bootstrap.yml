@@ -1,5 +1,6 @@
 server:
-  context-path: /config-server
+  servlet:
+    context-path: /config-server
 
 spring:
   cloud:

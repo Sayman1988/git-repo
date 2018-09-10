@@ -1,7 +1,8 @@
 # External configuration for Service Registry
 
 server:
-  context-path: /registry
+  servlet:
+    context-path: /registry
 
 eureka:
   instance:
@@ -11,6 +12,7 @@ eureka:
   server:
     enable-self-preservation: true
     waitTimeInMsWhenSyncEmpty: 0
+    #peer-node-read-timeout-ms: 1000
   client:
     register-with-eureka: false
     fetch-registry: false

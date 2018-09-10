@@ -1,7 +1,8 @@
 # External configuration for Notification Service
 
 server:
-  context-path: /notification-service
+  servlet:
+    context-path: /notification-service
 
 eureka:
   instance:

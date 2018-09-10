@@ -1,7 +1,8 @@
 # External configuration for Finance Service
 
 server:
-  context-path: /finance-service
+  servlet:
+    context-path: /finance-service
 
 eureka:
   instance:

@@ -1,7 +1,8 @@
 # External configuration for Monitoring
 
 server:
-  context-path: /monitoring
+  servlet:
+    context-path: /monitoring
 
 turbine:
   stream:
